@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <time.h>
+#include <iostream>
 
 #include "nsCOMPtr.h"
 #include "nsIFile.h"
@@ -158,7 +159,6 @@ static int do_main(int argc, char* argv[], char* envp[]) {
     appDataFile = argv[2];
 
     // CSC302 A2
-    std::cout << "Hello Andrew! ";
 
     char appEnv[MAXPATHLEN];
     SprintfLiteral(appEnv, "XUL_APP_FILE=%s", argv[2]);
@@ -243,6 +243,7 @@ uint32_t gBlocklistInitFlags = eDllBlocklistInitFlagDefault;
 
 int main(int argc, char* argv[], char* envp[]) {
   mozilla::TimeStamp start = mozilla::TimeStamp::Now();
+  std::cout << "Hello Andrew!";
 
 #ifdef MOZ_BROWSER_CAN_BE_CONTENTPROC
   // We are launching as a content process, delegate to the appropriate
@@ -259,6 +260,7 @@ int main(int argc, char* argv[], char* envp[]) {
       return 255;
     }
 #endif
+    std::cout << "Hello Andrew!";
 
     nsresult rv = InitXPCOMGlue();
     if (NS_FAILED(rv)) {
