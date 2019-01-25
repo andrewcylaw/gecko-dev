@@ -157,6 +157,9 @@ static int do_main(int argc, char* argv[], char* envp[]) {
     }
     appDataFile = argv[2];
 
+    // CSC302 A2
+    std::cout << "Hello Andrew! ";
+
     char appEnv[MAXPATHLEN];
     SprintfLiteral(appEnv, "XUL_APP_FILE=%s", argv[2]);
     if (putenv(strdup(appEnv))) {
