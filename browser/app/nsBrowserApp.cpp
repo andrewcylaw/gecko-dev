@@ -158,8 +158,6 @@ static int do_main(int argc, char* argv[], char* envp[]) {
     }
     appDataFile = argv[2];
 
-    // CSC302 A2
-
     char appEnv[MAXPATHLEN];
     SprintfLiteral(appEnv, "XUL_APP_FILE=%s", argv[2]);
     if (putenv(strdup(appEnv))) {
@@ -232,7 +230,7 @@ static nsresult InitXPCOMGlue() {
 
   // This will set this thread as the main thread.
   gBootstrap->NS_LogInit();
-
+   
   return NS_OK;
 }
 
@@ -243,7 +241,6 @@ uint32_t gBlocklistInitFlags = eDllBlocklistInitFlagDefault;
 
 int main(int argc, char* argv[], char* envp[]) {
   mozilla::TimeStamp start = mozilla::TimeStamp::Now();
-  std::cout << "Hello Andrew!";
 
 #ifdef MOZ_BROWSER_CAN_BE_CONTENTPROC
   // We are launching as a content process, delegate to the appropriate
@@ -260,7 +257,6 @@ int main(int argc, char* argv[], char* envp[]) {
       return 255;
     }
 #endif
-    std::cout << "Hello Andrew!";
 
     nsresult rv = InitXPCOMGlue();
     if (NS_FAILED(rv)) {
@@ -288,6 +284,9 @@ int main(int argc, char* argv[], char* envp[]) {
   if (NS_FAILED(rv)) {
     return 255;
   }
+ 
+  // CSC302 - A2 
+  std::cout << "Hello Andrew!\n";
 
   gBootstrap->XRE_StartupTimelineRecord(mozilla::StartupTimeline::START, start);
 
